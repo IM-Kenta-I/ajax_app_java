@@ -27,9 +27,9 @@ public class PostController {
   }
 
   @PostMapping("/posts")
-  public ResponseEntity<PostEntity> savePost(@ModelAttribute("postForm") PostForm form){
+  public ResponseEntity<PostEntity> savePost(@ModelAttribute("postForm") PostForm postForm){
     PostEntity post = new PostEntity();
-    post.setContent(form.getContent());
+    post.setContent(postForm.getContent());
     postRepository.insert(post);
     PostEntity resultPost = postRepository.findById(post.getId());
     return ResponseEntity.ok(resultPost);
